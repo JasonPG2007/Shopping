@@ -31,7 +31,7 @@ namespace ObjectBusiness
         public DateTime DateRegister { get; set; } = DateTime.Now;
         [JsonIgnore]
         [NotMapped]
-        public IFormFile SelectImage { get; set; } // Upload image
+        public IFormFile? SelectImage { get; set; } // Upload image
 
         // Relationship with product category
         [JsonIgnore]

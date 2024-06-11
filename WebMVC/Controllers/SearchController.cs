@@ -3,27 +3,27 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebMVC.Controllers
 {
-    public class ProductController : Controller
+    public class SearchController : Controller
     {
-        // GET: ProductController
+        // GET: SearchController
         public ActionResult Index()
         {
             return View();
         }
 
-        // GET: ProductController/Details/5
+        // GET: SearchController/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: ProductController/Create
+        // GET: SearchController/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: ProductController/Create
+        // POST: SearchController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
@@ -38,13 +38,13 @@ namespace WebMVC.Controllers
             }
         }
 
-        // GET: ProductController/Edit/5
+        // GET: SearchController/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: ProductController/Edit/5
+        // POST: SearchController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
@@ -59,13 +59,13 @@ namespace WebMVC.Controllers
             }
         }
 
-        // GET: ProductController/Delete/5
+        // GET: SearchController/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: ProductController/Delete/5
+        // POST: SearchController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)

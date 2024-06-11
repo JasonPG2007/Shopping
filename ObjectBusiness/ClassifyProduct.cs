@@ -21,7 +21,7 @@ namespace ObjectBusiness
         public DateTime DateCreate { get; set; }
         [NotMapped]
         [JsonIgnore]
-        public IFormFile SelectImage { get; set; }
+        public IFormFile? SelectImage { get; set; }
         [JsonIgnore]
         public virtual Product? Product { get; set; }
     }

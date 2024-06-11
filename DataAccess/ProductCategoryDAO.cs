@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace DataAccess
 {
-    public class ProductDAO
+    public class ProductCategoryDAO
     {
         #region Variable
-        private static ProductDAO instance;
+        private static ProductCategoryDAO instance;
         private static readonly object Lock = new object();
-        public static ProductDAO Instance
+        public static ProductCategoryDAO Instance
         {
             get
             {
@@ -21,7 +21,7 @@ namespace DataAccess
                 {
                     if (instance == null)
                     {
-                        instance = new ProductDAO();
+                        instance = new ProductCategoryDAO();
                     }
                 }
                 return instance;
@@ -29,25 +29,25 @@ namespace DataAccess
         }
         #endregion
 
-        public IEnumerable<Product> GetProducts()
+        public IEnumerable<ProductCategory> GetProductCategories()
         {
             using var context = new ShoppingDbContext();
-            var listProducts = context.Products.ToList();
-            return listProducts;
+            var listCategories = context.ProductCategories.ToList();
+            return listCategories;
         }
-        public Product GetProductById(int productId)
+        public ProductCategory GetCategoryById(int categoryId)
         {
             using var context = new ShoppingDbContext();
-            var product = context.Products.FirstOrDefault(p => p.ProductId == productId);
-            return product;
+            var category = context.ProductCategories.FirstOrDefault(c => c.CategoryId == categoryId);
+            return category;
         }
-        public bool InsertProduct(Product product)
+        public bool InsertCategory(ProductCategory category)
         {
             bool status = false;
             try
             {
                 using var context = new ShoppingDbContext();
-                context.Products.Add(product);
+                context.ProductCategories.Add(category);
                 context.SaveChanges();
                 status = true;
             }
@@ -57,16 +57,16 @@ namespace DataAccess
             }
             return status;
         }
-        public bool UpdateProduct(Product product)
+        public bool UpdateCategory(ProductCategory category)
         {
             using var context = new ShoppingDbContext();
             bool status = false;
-            var checkContainsProduct = GetProductById(product.ProductId);
-            if (checkContainsProduct != null)
+            var checkContainsCategory = GetCategoryById(category.CategoryId);
+            if (checkContainsCategory != null)
             {
                 try
                 {
-                    context.Entry<Product>(product).State = EntityState.Modified;
+                    context.Entry<ProductCategory>(category).State = EntityState.Modified;
                     context.SaveChanges();
                     status = true;
                 }
@@ -77,16 +77,16 @@ namespace DataAccess
             }
             return status;
         }
-        public bool DeleteProduct(int productId)
+        public bool DeleteCategory(int categoryId)
         {
             using var context = new ShoppingDbContext();
             bool status = false;
-            var checkContainsProduct = GetProductById(productId);
-            if (checkContainsProduct != null)
+            var checkContainsCategory = GetCategoryById(categoryId);
+            if (checkContainsCategory != null)
             {
                 try
                 {
-                    context.Products.Remove(checkContainsProduct);
+                    context.ProductCategories.Remove(checkContainsCategory);
                     context.SaveChanges();
                     status = true;
                 }
